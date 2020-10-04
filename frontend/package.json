@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint --no-fix"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.0",
@@ -34,7 +34,11 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "quotes": ["error", "single"],
+      "indent": ["error", 2],
+      "semi": ["error", "never"]
+    }
   },
   "browserslist": [
     "> 1%",

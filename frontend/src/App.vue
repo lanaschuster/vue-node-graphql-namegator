@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header msg="Welcome to Your Vue.js App"/>
+    <Header />
     <div class="columns is-multiline">
       <div class="column is-6">
         <Prefixes />
