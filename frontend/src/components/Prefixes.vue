@@ -3,7 +3,12 @@
     <template v-slot:fields>
       <div class="field has-addons">
         <div class="control is-expanded">
-          <input type="text" class="input" v-model="prefix" placeholder="Insira aqui os prefixos...">
+          <input 
+            type="text" 
+            class="input" 
+            v-model="prefix"
+            @keyup.enter="addPrefix(prefix)"
+            placeholder="Insira aqui os prefixos...">
         </div>
         <div class="control">
           <button class="button is-info"
@@ -32,6 +37,7 @@ export default {
   methods: {
     addPrefix(prefix) {
       this.$store.commit('addPrefix', prefix)
+      this.$store.dispatch('generateDomains')
       this.prefix = ''
     }
   },

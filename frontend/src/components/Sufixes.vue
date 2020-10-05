@@ -3,7 +3,12 @@
     <template v-slot:fields>
       <div class="field has-addons">
         <div class="control is-expanded">
-          <input type="text" class="input" v-model="sufix" placeholder="e aqui os sufixos.">
+          <input
+            type="text"
+            class="input"
+            v-model="sufix"
+            @keyup.enter="addSufix(sufix)"
+            placeholder="e aqui os sufixos.">
         </div>
         <div class="control">
           <button class="button is-info" @click="addSufix(sufix)">
@@ -31,6 +36,7 @@ export default {
   methods: {
     addSufix(sufix) {
       this.$store.commit('addSufix', sufix)
+      this.$store.dispatch('generateDomains')
       this.sufix = ''
     }
   },
