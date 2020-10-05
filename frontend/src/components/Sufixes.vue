@@ -25,14 +25,18 @@ export default {
   data() {
     return {
       title: 'Sufixos',
-      sufix: '',
-      sufixes: []
+      sufix: ''
     }
   },
   methods: {
     addSufix(sufix) {
-      this.sufixes.push(sufix)
+      this.$store.commit('addSufix', sufix)
       this.sufix = ''
+    }
+  },
+  computed: {
+    sufixes() {
+      return this.$store.state.sufixes
     }
   }
 }

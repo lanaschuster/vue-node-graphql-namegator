@@ -26,14 +26,18 @@ export default {
   data() {
     return {
       title: 'Prefixos',
-      prefix: '',
-      prefixes: []
+      prefix: ''
     }
   },
   methods: {
     addPrefix(prefix) {
-      this.prefixes.push(prefix)
+      this.$store.commit('addPrefix', prefix)
       this.prefix = ''
+    }
+  },
+  computed: {
+    prefixes() {
+      return this.$store.state.prefixes
     }
   }
 }
