@@ -6,6 +6,15 @@
         <table class="table is-fullwidth is-hoverable">
           <tr v-for="(item, index) in items" :key="index">
             <td>{{ item }}</td>
+            <td v-if="hasDeleteButton" class="has-text-right">
+              <button
+                class="button is-info is-right"
+                @click="$emit('remove-item', index)">
+                <span class="icon">
+                  <i class="fa fa-trash"></i>
+                </span>
+              </button>
+            </td>
           </tr>
         </table>
         <slot name="fields" />
@@ -30,6 +39,10 @@ export default {
       type: Array,
       required: true
     },
+    hasDeleteButton: {
+      type: Boolean,
+      default: false
+    }
   }
 }
 </script>

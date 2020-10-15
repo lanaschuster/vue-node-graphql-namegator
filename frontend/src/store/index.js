@@ -32,6 +32,12 @@ export default createStore({
     },
     cleanDomains(state) {
       state.domains = []
+    },
+    removePrefix(state, payload) {
+      state.prefixes.splice(payload, 1)
+    },
+    removeSufix(state, payload) {
+      state.sufixes.splice(payload, 1)
     }
   }
 })

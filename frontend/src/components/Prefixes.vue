@@ -1,5 +1,10 @@
 <template>
-  <ContentTable :title="title" :quantity="prefixes.length" :items="prefixes">
+  <ContentTable
+    :title="title"
+    :quantity="prefixes.length"
+    :items="prefixes"
+    hasDeleteButton
+    @remove-item="removePrefix">
     <template v-slot:fields>
       <div class="field has-addons">
         <div class="control is-expanded">
@@ -39,6 +44,10 @@ export default {
       this.$store.commit('addPrefix', prefix)
       this.$store.dispatch('generateDomains')
       this.prefix = ''
+    },
+    removePrefix(index) {
+      this.$store.commit('removePrefix', index)
+      this.$store.dispatch('generateDomains')
     }
   },
   computed: {

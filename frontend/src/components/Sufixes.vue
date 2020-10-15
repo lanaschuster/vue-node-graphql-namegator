@@ -1,5 +1,10 @@
 <template>
-  <ContentTable :title="title" :quantity="sufixes.length" :items="sufixes">
+  <ContentTable
+    :title="title"
+    :quantity="sufixes.length"
+    :items="sufixes"
+    hasDeleteButton
+    @remove-item="removeSufix">
     <template v-slot:fields>
       <div class="field has-addons">
         <div class="control is-expanded">
@@ -38,6 +43,10 @@ export default {
       this.$store.commit('addSufix', sufix)
       this.$store.dispatch('generateDomains')
       this.sufix = ''
+    },
+    removeSufix(index) {
+      this.$store.commit('removeSufix', index)
+      this.$store.dispatch('generateDomains')
     }
   },
   computed: {
