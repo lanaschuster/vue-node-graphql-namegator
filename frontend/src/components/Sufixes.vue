@@ -41,12 +41,10 @@ export default {
   methods: {
     addSufix(sufix) {
       this.$store.commit('addSufix', sufix)
-      this.$store.dispatch('generateDomains')
       this.sufix = ''
     },
     removeSufix(index) {
       this.$store.commit('removeSufix', index)
-      this.$store.dispatch('generateDomains')
     }
   },
   computed: {

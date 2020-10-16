@@ -42,12 +42,10 @@ export default {
   methods: {
     addPrefix(prefix) {
       this.$store.commit('addPrefix', prefix)
-      this.$store.dispatch('generateDomains')
       this.prefix = ''
     },
     removePrefix(index) {
       this.$store.commit('removePrefix', index)
-      this.$store.dispatch('generateDomains')
     }
   },
   computed: {

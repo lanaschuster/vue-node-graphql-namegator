@@ -5,19 +5,20 @@ export default createStore({
   state() {
     return {
       prefixes: [],
-      sufixes: [],
-      domains: []
+      sufixes: []
     }
   },
-  actions: {
-    generateDomains({ commit }) {
-      commit('cleanDomains')
+  getters: {
+    domains(state) {
+      let domains = []
       
-      this.state.prefixes.forEach(prefix => {
-        this.state.sufixes.forEach(sufix => {
-          commit('addDomain', prefix +''+ sufix)
+      state.prefixes.forEach(prefix => {
+        state.sufixes.forEach(sufix => {
+          domains.push(prefix +''+ sufix)
         })
       })
+
+      return domains
     }
   },
   mutations: {
@@ -26,12 +27,6 @@ export default createStore({
     },
     addPrefix(state, payload) {
       state.prefixes.push(payload)
-    },
-    addDomain(state, payload) {
-      state.domains.push(payload)
-    },
-    cleanDomains(state) {
-      state.domains = []
     },
     removePrefix(state, payload) {
       state.prefixes.splice(payload, 1)

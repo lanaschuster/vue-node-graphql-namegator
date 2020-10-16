@@ -9,9 +9,6 @@ export default {
   components: {
     ContentTable
   },
-  created() {
-    this.$store.dispatch('generateDomains')
-  },
   data() {
     return {
       title: 'Domínios'
@@ -19,7 +16,7 @@ export default {
   },
   computed: {
     domains() {
-      return this.$store.state.domains
+      return this.$store.getters.domains
     }
   }
 }
