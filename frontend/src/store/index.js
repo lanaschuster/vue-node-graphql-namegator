@@ -14,7 +14,13 @@ export default createStore({
       
       state.prefixes.forEach(prefix => {
         state.sufixes.forEach(sufix => {
-          domains.push(prefix +''+ sufix)
+          const name = prefix +''+ sufix
+          const domain = name.toLowerCase()
+          const checkout = `https://checkout.hostgator.com.br/?a=add&sld=${domain}&tld=.com`
+          domains.push({
+            name,
+            checkout
+          })
         })
       })
 

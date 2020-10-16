@@ -5,13 +5,22 @@
       <div class="card-content">
         <table class="table is-fullwidth is-hoverable">
           <tr v-for="(item, index) in items" :key="index">
-            <td>{{ item }}</td>
+            <td>{{ (item.name) ? item.name : item }}</td>
             <td v-if="hasDeleteButton" class="has-text-right">
               <button
                 class="button is-info is-right"
                 @click="$emit('remove-item', index)">
                 <span class="icon">
                   <i class="fa fa-trash"></i>
+                </span>
+              </button>
+            </td>
+            <td v-if="hasPurchaseButton" class="has-text-right">
+              <button
+                class="button is-info is-right"
+                @click="$emit('buy-item', index)">
+                <span class="icon">
+                  <i class="fa fa-shopping-cart"></i>
                 </span>
               </button>
             </td>
@@ -40,6 +49,10 @@ export default {
       required: true
     },
     hasDeleteButton: {
+      type: Boolean,
+      default: false
+    },
+    hasPurchaseButton: {
       type: Boolean,
       default: false
     }
